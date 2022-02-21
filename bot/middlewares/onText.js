@@ -6,7 +6,7 @@
 
 export default (pattern, callback) =>
   (req, res, next) => {
-    if (!res.type === "message" || !req.text) return next()
+    if (!(res.type === "message" && req.text)) return next()
     const matches = req.text.match(pattern)
     return matches
       ? callback(req, res, matches)
