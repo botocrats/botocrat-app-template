@@ -1,0 +1,39 @@
+{
+  "name": "my-botocrat-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "npm run dev",
+    "dev": "nodemon ./run/development --config ./config/nodemon.json",
+    "prod": "forever start ./config/forever.json",
+    "stop": "forever stop my-botocrat-bot",
+    "lint": "eslint -c ./config/.eslintrc.cjs",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dont-store-bot-token-in-codebase": "if grep -R -E '[0-9]{9,}:AA[0-9a-zA-Z_]{30,}' ./ --exclude-dir=node_modules; then echo '\nErr: REMOVE the visible token before commit!\n'; exit 1; else exit 0; fi"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@botocrat/core": "^0.2.0",
+    "@botocrat/express": "^1.0.0",
+    "@botocrat/telegram": "^0.2.8",
+    "express": "^4.17.2",
+    "winston": "^3.6.0"
+  },
+  "pre-commit": [
+    "dont-store-bot-token-in-codebase"
+  ],
+  "devDependencies": {
+    "@botocrat/poller": "^1.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.2.0",
+    "forever": "^4.0.3",
+    "nodemon": "^2.0.15",
+    "pre-commit": "^1.2.2"
+  }
+}

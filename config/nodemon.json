@@ -1,0 +1,12 @@
+{
+  "watch": [
+    "bot",
+    "config/app.js"
+  ],
+  "ext": "js",
+  "ignore": [
+    "node_modules"
+  ],
+  "verbose": true,
+  "delay": "3"
+}

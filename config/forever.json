@@ -1,0 +1,8 @@
+{
+  "uid": "my-botocrat-bot",
+  "max": 5, 
+  "spinSleepTime": 1000,
+  "append": true,
+  "watch": true,
+  "script": "./run/production.js"
+}
